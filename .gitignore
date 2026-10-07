@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+models/icons/*
+!models/icons/.gitkeep
+*.gguf
+*.onnx

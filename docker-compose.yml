@@ -1,0 +1,55 @@
+version: "3.9"
+
+# MORSE-переводчик — одна сборка для онлайн-версии и для виртуальной машины.
+# Три службы: сервер модели (OpenAI-совместимый API), ядро morse-core (FastAPI),
+# интерфейс Gradio (текст + микрофон + звук + полоса картинок).
+#
+# Без видеокарты: модель-сервер = ollama (CPU). С видеокартой — заменить образ
+# на vllm/vllm-openai и прокинуть GPU (см. закомментированный вариант ниже).
+
+services:
+  model-server:
+    image: ollama/ollama:latest
+    container_name: morse-model-server
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+    ports:
+      - "11434:11434"
+    # Для видеокарты раскомментировать:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  morse-core:
+    build: ./morse-core
+    container_name: morse-core
+    restart: unless-stopped
+    environment:
+      - MODEL_SERVER_URL=http://model-server:11434/v1
+      - MODEL_SERVER_MODEL=qwen3:4b
+      - ICONS_DIR=/data/icons
+    volumes:
+      - ./models/icons:/data/icons:ro
+    ports:
+      - "8001:8000"
+    depends_on:
+      - model-server
+
+  gradio-ui:
+    build: ./gradio-app
+    container_name: morse-gradio
+    restart: unless-stopped
+    environment:
+      - MORSE_CORE_URL=http://morse-core:8000
+    ports:
+      - "7860:7860"
+    depends_on:
+      - morse-core
+
+volumes:
+  ollama-models:
