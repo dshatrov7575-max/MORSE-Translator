@@ -47,10 +47,16 @@ def main() -> None:
         "messages": [
             {
                 "role": "user",
-                "content": f"Перескажи кратко своими словами:\n\n{PROMPT_RU_1KB}",
+                "content": f"Перескажи кратко своими словами (3-4 предложения):\n\n{PROMPT_RU_1KB}",
             }
         ],
         "temperature": 0.2,
+        "max_tokens": 400,
+        # Qwen3 поддерживает режим рассуждений ("thinking"), который резко
+        # увеличивает число токенов и время генерации, искажая замер
+        # скорости перевода. Отключаем явно; сервер, не знающий это поле,
+        # просто его проигнорирует.
+        "chat_template_kwargs": {"enable_thinking": False},
     }
 
     req = urllib.request.Request(
