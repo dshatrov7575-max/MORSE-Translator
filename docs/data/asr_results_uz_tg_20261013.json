@@ -1,0 +1,146 @@
+{
+  "uz": [
+    {
+      "file": "00.wav",
+      "reference": "siz shuningdek oʻzingiznikidan boshqa hukumatlar maslahatini olishni xohlashingiz mumkin biroq ularning maslahati oʻzlarining fuqarolari uchun moʻljallangan",
+      "hypothesis": "сіз шунеңдік өзенгізникидан бошқа хукуматлар маслахатын айлшыны хоклашенгіз мүмкін бірақ үләрне маслахаты өзләрне фуқаралары үшін мөлжалләнген",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "01.wav",
+      "reference": "internet oʻzida ommaviy hamda shaxslararo aloqa elementlarini mujassamlashtiradi",
+      "hypothesis": "интернет ұзды омма бейхамды шахстар ары алақа элементлары мұжасамлажтырады",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "02.wav",
+      "reference": "olimlar sayyoralar qanday qilib shakllanishini ayniqsa yer qanday shakllanganini tushunishga umid qiladilar chunki kometalar ancha avval yer bilan toʻqnashgan",
+      "hypothesis": "ғылымlar сайоралар қандай қылып шәкерланышына айнықсақ ер қандай шәкерланыңганын чүнішке ұмет қаладылар чүнки кометалар анджавар ербландуқнашкан",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "03.wav",
+      "reference": "masalan dunyodagi eng keng suratga olish formati 35 mm boʻlib bu analog fotoplyonkalar davri yakunida ustun boʻlgan fotoplyonka oʻlchami boʻlgan",
+      "hypothesis": "[ПОЛНЫЙ СБОЙ: вывод на тибетском письме, не связан со входом]",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "04.wav",
+      "reference": "kirchner xonim argentina teatrida prezidentlikka nomzodini qoʻyishni niyat qilganini eʼlon qildi xuddi shu joyda u 2005-yili buenos-ayres provinsiyasi delegatsiyasi aʼzosi sifatida senat uchun oʻz kampaniyasini boshlagandi",
+      "hypothesis": "Кирчнер ханым Аргентина театрада президентлікке намзадын қой-ишна ниятқлиянын эйлан қылды хут түшу джойдау 2005-чы елі буйнос айрис провинциясы делегациясы азосы сфатты сенат үшін ұз компаниясына бошлайанды",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "05.wav",
+      "reference": "olimlar sayyoralar qanday qilib shakllanishini ayniqsa yer qanday shakllanganini tushunishga umid qiladilar chunki kometalar ancha avval yer bilan toʻqnashgan",
+      "hypothesis": "ұлымлар саяуралар қандай қылып шәкірланышына айнақса ер қандай шәкірланыгеніна түшінышке мид қаладылар чүнке комедалар анча аббал ербілан тұқнашкен",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "06.wav",
+      "reference": "aynan shu oyda boshqa bir samolyot uchish-qoʻnish yoʻlagidan chiqib ketib devorga urilgan va oʻn yetti kishi vafot etgandi",
+      "hypothesis": "Ay Namshu Ayda, Bashqabir Somaliad Uchish Khunsh Yuragidan chikip ketip, Devor Yurulianwa 17 kishif Vafa aditkendir.",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "07.wav",
+      "reference": "1940-yilning 15-avgustida ittifoqchilar janubiy fransiyaga bostirib kirdi bu bosqin ajdar operatsiyasi deb atalgan",
+      "hypothesis": "[ПОЛНЫЙ СБОЙ: зацикливание — модель повторяет \"илx\" около 90 раз подряд]",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "08.wav",
+      "reference": "aqsh gimnastika va usoc bir maqsadga ega gimnastika va sport turini hamda boshqalarni atletlarning oʻz orzulariga xavfsiz ijobiy hamda vakolatli muhitda erishishlari uchun imkon qadar xavfsiz qilish",
+      "hypothesis": "Aqsh Gimnaziko, Yusuk, Burmaqsik, Vigi Gimnaziko, Sporterna xamda boi shqalara na appletilani uz orzulara ga hafifasiz ijabi xamda vakuolara ga mohita erishilari uchimkwan qadar hafifasiz qilish.",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    },
+    {
+      "file": "09.wav",
+      "reference": "ayollarning startda qoʻyilgan guruhidan toʻrtta changʻichi oʻz masofasini tugata olmadilar va katta slalomdagi jami 117 ta changʻichidan 45 tasi poydaga oʻrin ola olmadi",
+      "hypothesis": "IELARNING STARTDA QOYILGƏ QURUXUDA TURTDA ÇANGHIÇI UZMASOFASIN TÜGETI OLMADILAR VÀ KÄTDDA SLALOMDAGİ CAMI BRYZONETIDA ÇANGHIÇIDAN XIRQBİCHDASI POYDAGİ URUN ALA OLMADI",
+      "detected_lang": "uz",
+      "lang_prob": 1
+    }
+  ],
+  "tg": [
+    {
+      "file": "00.wav",
+      "reference": "ин имконияти хуб барои дидани фаҷри қутбӣ аст зеро ки осмон мутаносибан шабонарӯзӣ торик мешавад",
+      "hypothesis": "۱۲۲ این امکانیت خوب برای دیدن فجر قدبی است زیرا که آسمان متناسبا شباناروزی طوریگ می شود.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "01.wav",
+      "reference": "номинатсияҳои «беҳтарин филм» «коргардон» «наворбардорӣ» «ороиши костюм» «таҳрири филмҳо» «баҳогузории аслӣ» «тарроҳии истеҳсолӣ» «таҳрири садо» «омезиши садо» ва «сенарияи аслӣ» ба дигар номинатсияҳо дохил мешаванд",
+      "hypothesis": "Naminatsiyahoyi behterin film, koregardon, nawarbardari, arayishi kaastiyum, tahririr filmha, bahaguzarii acili, tarrohii istihsoli, tahririr sada, omizish sada, wa ssenaarii acili, ba digar naminatsiyahoy dokhil meh shaband.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "02.wav",
+      "reference": "танҳо дар тӯли ду ҳафта амрикоиҳо ва нерӯҳои озоди фаронса ҷануби фаронсаро озод карда ба сӯи олмон ҳаракат карданд",
+      "hypothesis": "۱۰ در دول دو هفته امریکایی ها و نیروه های آزاد فرانسه جنوب فرانسه را آزاد کرده به سوی آلمان حرکت کردند.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "03.wav",
+      "reference": "чини қадим дорои усули беназири нишон додани давраҳои гуногуни замон буд ҳар як марҳилаи чин ва ё ҳар як оилаи сари қудратбуда як навъ сулолаи ба худ хос буд",
+      "hypothesis": "Çin قدیم دارای اصول بینظیر نشاندادن دوره های گناگونی زمان خود بود. در هر یک مرحله چین ویا هر یک آیله سری قدرت بوده یک نو سلاله بخود خاص بود.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "04.wav",
+      "reference": "дар баъзе хатсайрҳо ширкатҳои бузург дорои ҳавопаймоҳои худ мебошанд вале барои хатсайрҳои дигар ва ширкатҳои хурд ин як мушкилие буд",
+      "hypothesis": "Darbazey Xacarho Xirgatoi Buzorg Doroi Avopaymohoi Xud, Mbushan, Vali Baroi Xacarhoi Digarva Xirgatoi Xurd, Inniak Mushkilii Bud.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "05.wav",
+      "reference": "ҷазираи ҳонконг ба қаламрави ҳонконг номи худро дода ҷойе мебошад ки аксари сайёҳон онро ҳамчун мақсади асосии диққати худ мешуморанд",
+      "hypothesis": "JZIRAY HONGKONG BAQALAMROWI HONGKONG NOMI KHUDRU DODA, JOY MEBUSHAD KEE, AKSARI SAYAHON ON ROO, HEMCCHON MAKSAD ASSOCIY DIGGATI KHUD MESHUMORAND.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "06.wav",
+      "reference": "дар шимол минтақа бо сахел ва дар ҷануб ва ғарб бо уқёнуси атлантика ҳамсарҳад мебошад",
+      "hypothesis": "Darchimol, [иврит/арабский фрагмент] minтقا با ساخل و درجنوب وغرب با اوکیونوسی اتلانتیکا همسرحد میبوشد.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "07.wav",
+      "reference": "чӣ қадаре ки адади россби хурдтар бошад ҳамон қадар ситора нисбат ба гардиши магнитӣ камфаъолтар аст",
+      "hypothesis": "چقداره که عدد روز بýchولتر باشد همون قدر سیتورا نزبتاً با گردش مگنیتی کام فاولتر از.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "08.wav",
+      "reference": "ҳар як инсон дар ҳаёти ҷомеа иштирок меварзад ва аз системаҳои нақлиётӣ истифода мекунад анқариб ҳамагон аз системаҳои нақлиётӣ шикоят мекунанд",
+      "hypothesis": "Harriyak inson dar haioti jo mea ishtirok me warzad waz sistema hoi naqliyoti istifoda me kunad Anqariib hamagun az sistema hoi naqliyoti shikoyat me kunad I",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    },
+    {
+      "file": "09.wav",
+      "reference": "дар натиҷа гурӯҳҳои оташнишонӣ ва наҷотбахшӣ оташро соати 11:35 шаб хомӯш карданд",
+      "hypothesis": "Darnatija, goroha otosh nishani wana jodbhashi otosh roo sato 11.35 shabh homoosh kardend.",
+      "detected_lang": "tg",
+      "lang_prob": 1
+    }
+  ]
+}
