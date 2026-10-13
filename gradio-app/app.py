@@ -45,18 +45,37 @@ def translate(text: str, source_lang_label: str, target_label: str):
     return data.get("morse_text", ""), status
 
 
-def transcribe_audio(audio_path: str | None):
+def transcribe_audio(audio_path: str | None, source_lang_label: str):
     if not audio_path:
         return ""
+    lang_code = LANGS[source_lang_label]
     try:
         with httpx.Client(timeout=120.0) as client, open(audio_path, "rb") as f:
-            resp = client.post(f"{MORSE_CORE_URL}/asr", files={"file": f})
-            if resp.status_code == 501 or resp.status_code == 500:
-                return f"(распознавание речи пока недоступно: {resp.json().get('detail', resp.text)})"
+            resp = client.post(
+                f"{MORSE_CORE_URL}/asr",
+                files={"file": f},
+                data={"lang": lang_code},
+            )
+            if resp.status_code in (501, 503, 500):
+                return f"(распознавание речи недоступно: {resp.json().get('detail', resp.text)})"
             resp.raise_for_status()
             return resp.json().get("text", "")
     except httpx.HTTPError as exc:
         return f"Ядро недоступно: {exc}"
+
+
+def toggle_mic(source_lang_label: str):
+    """Узбекский/таджикский — без распознавания речи в MVP (решение
+    владельца 13.10.2026, см. MORSE_SPEECH_CHECK_UZ_TJ_D0_20261013.md):
+    отключаем микрофон вместо того, чтобы пускать на заведомо нерабочий
+    запрос."""
+    lang_code = LANGS[source_lang_label]
+    if lang_code in ("uz", "tj"):
+        return gr.update(
+            interactive=False,
+            label="Микрофон недоступен для этого языка в MVP (см. HANDOFF)",
+        )
+    return gr.update(interactive=True, label="Или наговорить (микрофон)")
 
 
 with gr.Blocks(title="MORSE-переводчик") as demo:
@@ -82,7 +101,8 @@ with gr.Blocks(title="MORSE-переводчик") as demo:
 
     icon_strip = gr.Gallery(label="Полоса картинок (подключается на шаге D4)", columns=8, visible=True)
 
-    mic_in.change(transcribe_audio, inputs=mic_in, outputs=text_in)
+    mic_in.change(transcribe_audio, inputs=[mic_in, source_lang], outputs=text_in)
+    source_lang.change(toggle_mic, inputs=source_lang, outputs=mic_in)
     btn.click(translate, inputs=[text_in, source_lang, target_lang], outputs=[text_out, status_out])
 
 if __name__ == "__main__":

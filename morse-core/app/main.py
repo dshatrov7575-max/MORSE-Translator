@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 import httpx
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
 from app.schemas import (
@@ -51,6 +51,22 @@ NOT_READY = (
     "МОРЗЕ↔UMR (план B, этап B1-B3); до их готовности здесь честная ошибка, "
     "а не придуманный ответ."
 )
+
+# Решение владельца от 13.10.2026: распознавание речи для узбекского и
+# таджикского сознательно исключено из MVP — faster-whisper (large-v3-turbo)
+# на этих языках даёт неприемлемое качество (исковерканная кириллица не по
+# смыслу, галлюцинации на чужом письме); подробности и сырые данные —
+# docs/MORSE_SPEECH_CHECK_UZ_TJ_D0_20261013.md. Честная ошибка вместо
+# молчаливой выдачи мусора под видом распознанного текста.
+SPEECH_UZ_TJ_NOT_SUPPORTED = (
+    "Распознавание речи для узбекского и таджикского сознательно исключено "
+    "из MVP (решение владельца, 13.10.2026): faster-whisper даёт неприемлемое "
+    "качество на этих языках, см. docs/MORSE_SPEECH_CHECK_UZ_TJ_D0_20261013.md. "
+    "Используйте текстовый ввод для этих языков."
+)
+# Коды ISO-639-1, которые faster-whisper/Whisper использует для этих языков
+# (узбекский — 'uz', таджикский — 'tg', не 'tj'!).
+_UZ_TJ_WHISPER_CODES = {"uz", "tg"}
 
 
 @app.get("/health")
@@ -143,12 +159,20 @@ async def tts(req: TtsRequest):
 
 
 @app.post("/asr", response_model=AsrResponse)
-async def asr(file: UploadFile = File(...)) -> AsrResponse:
+async def asr(file: UploadFile = File(...), lang: str | None = Form(None)) -> AsrResponse:
     """
     Распознавание речи через faster-whisper (large-v3-turbo). Загружает модель
     лениво при первом вызове (не на старте контейнера), чтобы /health не ждал
     загрузки модели.
+
+    uz/tj сознательно исключены из MVP (см. SPEECH_UZ_TJ_NOT_SUPPORTED) —
+    если клиент заранее знает язык (`lang`), не тратим время на распознавание;
+    если язык не передан и модель сама определит uz/tg — тоже честная ошибка,
+    а не выдача мусора под видом результата.
     """
+    if lang in ("uz", "tj"):
+        raise HTTPException(status_code=503, detail=SPEECH_UZ_TJ_NOT_SUPPORTED)
+
     try:
         from faster_whisper import WhisperModel
     except ImportError as exc:
@@ -166,6 +190,13 @@ async def asr(file: UploadFile = File(...)) -> AsrResponse:
     segments, info = _whisper_model.transcribe(str(tmp_path))
     text = " ".join(seg.text for seg in segments)
     logger.info("ASR за %.2fs, язык=%s", time.time() - start, info.language)
+
+    if info.language in _UZ_TJ_WHISPER_CODES:
+        raise HTTPException(
+            status_code=503,
+            detail=f"{SPEECH_UZ_TJ_NOT_SUPPORTED} (язык автоматически определён как '{info.language}')",
+        )
+
     return AsrResponse(text=text.strip(), lang_detected=info.language)
 
 
